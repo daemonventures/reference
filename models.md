@@ -1,6 +1,6 @@
 # Current Model Recommendations
 
-> **Last updated:** 2026-04-01
+> **Last updated:** 2026-04-16
 > **Benchmark reference:** [artificialanalysis.ai/leaderboards/models](https://artificialanalysis.ai/leaderboards/models)
 
 Agents: **never assume your training data has current model names.** Models change faster than your knowledge. Check this file before selecting any external LLM model. If this file is >30 days old, escalate to the board requesting a model refresh.
@@ -27,6 +27,18 @@ For real-time voice agents (Pipecat).
 | Why | Lowest latency, supports audio+video+tool-use simultaneously (March 2026) |
 
 GA fallback: `gemini-live-2.5-flash-native-audio`.
+
+## Text-to-Speech / Pre-Call Greetings
+
+For synthesizing audio ahead of time (e.g. per-customer greeting PCMs that play on call connect while Gemini Live warms up). Not the live mid-call path — that's Gemini Live above.
+
+| Recommended | `gemini-3.1-flash-tts-preview` |
+|---|---|
+| Provider | Google (Gemini API) |
+| Why | Low-latency speech generation, single or multi-speaker. Supersedes `gemini-2.5-flash-preview-tts`. |
+| Output | 24kHz 16-bit mono PCM |
+
+Supersedes: `gemini-2.5-flash-preview-tts` (still functional; existing cached PCMs are not force-migrated).
 
 ## Image Generation / Editing
 
