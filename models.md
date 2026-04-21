@@ -1,6 +1,6 @@
 # Current Model Recommendations
 
-> **Last updated:** 2026-04-16
+> **Last updated:** 2026-04-21
 > **Benchmark reference:** [artificialanalysis.ai/leaderboards/models](https://artificialanalysis.ai/leaderboards/models)
 
 Agents: **never assume your training data has current model names.** Models change faster than your knowledge. Check this file before selecting any external LLM model. If this file is >30 days old, escalate to the board requesting a model refresh.
@@ -60,6 +60,20 @@ When agents need a non-Claude external LLM (content generation, analysis, extrac
 
 Low-latency alternative: `gemini-3.1-flash-lite-preview` (only when ultra-low latency is required).
 
+## Deep Research / Multi-Step Investigation
+
+For multi-step research with citations — market analysis, opportunity evaluation, competitor scans. Async Interactions API, 10-20 min per run.
+
+| Recommended | `deep-research-max-preview-04-2026` |
+|---|---|
+| Provider | Google (Gemini Interactions API) |
+| Why | Deepest Deep Research variant. Multimodal input, cited reports, visualizations, MCP tool support. Fleet routes via ops `research-cli.js` / MCP `gemini_start_research`. |
+| Endpoint | `POST /v1beta/interactions` with `agent` field |
+
+Standard alternative: `deep-research-preview-04-2026` (faster, shallower).
+
+Supersedes: `deep-research-pro-preview-12-2025`.
+
 ## Embeddings
 
 For semantic search / RAG if needed.
@@ -74,6 +88,7 @@ For semantic search / RAG if needed.
 ## Deprecation Warnings
 
 - **Gemini 2.0 Flash** and **2.0 Flash-Lite** shut down **June 1, 2026**. Update any references.
+- **`deep-research-pro-preview-12-2025`** superseded by `deep-research-max-preview-04-2026` on 2026-04-21.
 
 ## How This File Is Maintained
 
