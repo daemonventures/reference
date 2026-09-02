@@ -44,10 +44,10 @@ Supersedes: `gemini-2.5-flash-preview-tts` (still functional; existing cached PC
 
 For product images, hero images, OG images, and any image editing.
 
-| Recommended | `gemini-3.1-flash-image-preview` |
+| Recommended | `gemini-3.1-flash-image` |
 |---|---|
 | Provider | Google (Gemini API) |
-| Why | Native generation and editing in one model. Use for all image needs. |
+| Why | Native generation and editing in one model. Use for all image needs. Preview tag dropped 2026-09-02 — verified live (real inline image returned on the production request shape). |
 
 ## General LLM Reasoning
 
@@ -58,7 +58,7 @@ When agents need a non-Claude external LLM (content generation, analysis, extrac
 | Provider | Google |
 | Why | Founder directive 2026-09-02: `gemini-3.8-flash` (released 2026-09-02) replaces `gemini-3.7-flash` as the default external-LLM/reasoning model — same lane, newer release. Always run at `thinkingConfig.thinkingLevel: "high"`. |
 
-Low-latency alternative: `gemini-3.1-flash-lite-preview` (only when ultra-low latency is required).
+Low-latency alternative: `gemini-flash-lite-latest` (only when ultra-low latency is required — this is the rolling GA alias, not a dated snapshot; it can retarget without a code change, so re-verify parity if quality/latency shifts unexpectedly).
 
 ## Deep Research / Multi-Step Investigation
 
@@ -88,6 +88,8 @@ For semantic search / RAG if needed.
 ## Deprecation Warnings
 
 - **`gemini-3.7-flash`** RETIRED **2026-09-02** (founder directive, same-day as `gemini-3.8-flash`'s release) — replaced everywhere by `gemini-3.8-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.7-flash` for any new work.
+- **`gemini-3.1-flash-image-preview`** RETIRED **2026-09-02** (preview tag dropped) — replaced everywhere by `gemini-3.1-flash-image`. Do not select the `-preview` id for any new work.
+- **`gemini-3.1-flash-lite-preview`** RETIRED **2026-09-02** — replaced everywhere by the rolling alias `gemini-flash-lite-latest`. Do not select the dated `-preview` id for any new work.
 - **`gemini-3.1-pro-preview`** RETIRED **2026-08-14** (founder directive) — replaced everywhere by `gemini-3.7-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.1-pro-preview` for any new work. **Exception:** Claudessa's voice-transcription trio remains pinned to `gemini-3.1-pro-preview` under a standing hold (D-0763) — `gemini-3.7-flash`/`3.8-flash` fabricate transcripts from no-speech audio; do not migrate that lane without clearing the Silero VAD speech-presence gate first.
 - **Gemini 2.0 Flash** and **2.0 Flash-Lite** shut down **June 1, 2026**. Update any references.
 - **`deep-research-pro-preview-12-2025`** superseded by `deep-research-max-preview-04-2026` on 2026-04-21.
