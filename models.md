@@ -1,6 +1,6 @@
 # Current Model Recommendations
 
-> **Last updated:** 2026-08-14
+> **Last updated:** 2026-09-02
 > **Benchmark reference:** [artificialanalysis.ai/leaderboards/models](https://artificialanalysis.ai/leaderboards/models)
 
 Agents: **never assume your training data has current model names.** Models change faster than your knowledge. Check this file before selecting any external LLM model. If this file is >30 days old, escalate to the board requesting a model refresh.
@@ -11,11 +11,11 @@ Agents: **never assume your training data has current model names.** Models chan
 
 For analyzing screenshots, video, and evaluating web UI quality. Quality is paramount — always use the best available model.
 
-| Recommended | `gemini-3.7-flash` (at `thinkingLevel: "high"`) |
+| Recommended | `gemini-3.8-flash` (at `thinkingLevel: "high"`) |
 |---|---|
 | Provider | Google (Gemini API) |
-| Why | Founder directive 2026-08-14: `gemini-3.7-flash` (released 2026-08-13) replaces `gemini-3.1-pro-preview` for QA/vision — judged higher quality at high reasoning effort, and far cheaper. Always run at `thinkingConfig.thinkingLevel: "high"`. |
-| Env var | `GEMINI_QA_MODEL=gemini-3.7-flash` |
+| Why | Founder directive 2026-09-02: `gemini-3.8-flash` (released 2026-09-02) replaces `gemini-3.7-flash` for QA/vision — same lane, newer release. Always run at `thinkingConfig.thinkingLevel: "high"`. |
+| Env var | `GEMINI_QA_MODEL=gemini-3.8-flash` |
 
 ## Voice / Speech-to-Speech
 
@@ -53,10 +53,10 @@ For product images, hero images, OG images, and any image editing.
 
 When agents need a non-Claude external LLM (content generation, analysis, extraction).
 
-| Recommended | `gemini-3.7-flash` (at `thinkingLevel: "high"`) |
+| Recommended | `gemini-3.8-flash` (at `thinkingLevel: "high"`) |
 |---|---|
 | Provider | Google |
-| Why | Founder directive 2026-08-14: `gemini-3.7-flash` (released 2026-08-13) replaces `gemini-3.1-pro-preview` as the default external-LLM/reasoning model — judged higher quality at high reasoning effort, and far cheaper. Always run at `thinkingConfig.thinkingLevel: "high"`. |
+| Why | Founder directive 2026-09-02: `gemini-3.8-flash` (released 2026-09-02) replaces `gemini-3.7-flash` as the default external-LLM/reasoning model — same lane, newer release. Always run at `thinkingConfig.thinkingLevel: "high"`. |
 
 Low-latency alternative: `gemini-3.1-flash-lite-preview` (only when ultra-low latency is required).
 
@@ -87,7 +87,8 @@ For semantic search / RAG if needed.
 
 ## Deprecation Warnings
 
-- **`gemini-3.1-pro-preview`** RETIRED **2026-08-14** (founder directive) — replaced everywhere by `gemini-3.7-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.1-pro-preview` for any new work.
+- **`gemini-3.7-flash`** RETIRED **2026-09-02** (founder directive, same-day as `gemini-3.8-flash`'s release) — replaced everywhere by `gemini-3.8-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.7-flash` for any new work.
+- **`gemini-3.1-pro-preview`** RETIRED **2026-08-14** (founder directive) — replaced everywhere by `gemini-3.7-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.1-pro-preview` for any new work. **Exception:** Claudessa's voice-transcription trio remains pinned to `gemini-3.1-pro-preview` under a standing hold (D-0763) — `gemini-3.7-flash`/`3.8-flash` fabricate transcripts from no-speech audio; do not migrate that lane without clearing the Silero VAD speech-presence gate first.
 - **Gemini 2.0 Flash** and **2.0 Flash-Lite** shut down **June 1, 2026**. Update any references.
 - **`deep-research-pro-preview-12-2025`** superseded by `deep-research-max-preview-04-2026` on 2026-04-21.
 
