@@ -1,6 +1,6 @@
 # Current Model Recommendations
 
-> **Last updated:** 2026-09-02
+> **Last updated:** 2026-09-25
 > **Benchmark reference:** [artificialanalysis.ai/leaderboards/models](https://artificialanalysis.ai/leaderboards/models)
 
 Agents: **never assume your training data has current model names.** Models change faster than your knowledge. Check this file before selecting any external LLM model. If this file is >30 days old, escalate to the board requesting a model refresh.
@@ -11,11 +11,11 @@ Agents: **never assume your training data has current model names.** Models chan
 
 For analyzing screenshots, video, and evaluating web UI quality. Quality is paramount — always use the best available model.
 
-| Recommended | `gemini-3.8-flash` (at `thinkingLevel: "high"`) |
+| Recommended | `gemini-3.7-flash` (at `thinkingLevel: "high"`) |
 |---|---|
 | Provider | Google (Gemini API) |
-| Why | Founder directive 2026-09-02: `gemini-3.8-flash` (released 2026-09-02) replaces `gemini-3.7-flash` for QA/vision — same lane, newer release. Always run at `thinkingConfig.thinkingLevel: "high"`. |
-| Env var | `GEMINI_QA_MODEL=gemini-3.8-flash` |
+| Why | Founder directive 2026-09-25 (D-6342): reverted from `gemini-3.8-flash` back to `gemini-3.7-flash` as the fleet reviewer / QA standard, after a parser regression surfaced following the 2026-09-02 bump (D-5067). `gemini-3.8-flash` remains the standard for DV's ops research tools (TD-227/D-6199). Always run at `thinkingConfig.thinkingLevel: "high"`. |
+| Env var | `GEMINI_QA_MODEL=gemini-3.7-flash` |
 
 ## Voice / Speech-to-Speech
 
@@ -87,7 +87,7 @@ For semantic search / RAG if needed.
 
 ## Deprecation Warnings
 
-- **`gemini-3.7-flash`** RETIRED **2026-09-02** (founder directive, same-day as `gemini-3.8-flash`'s release) — replaced everywhere by `gemini-3.8-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.7-flash` for any new work.
+- **`gemini-3.7-flash`** RETIRED **2026-09-02** for general reasoning (founder directive, same-day as `gemini-3.8-flash`'s release) — **reinstated 2026-09-25** as the fleet reviewer / QA standard only (D-6342; see QA / Vision Evaluation above), after a parser regression on `gemini-3.8-flash` (D-5067). `gemini-3.8-flash` remains the default everywhere else, including DV's ops research tools (TD-227/D-6199). Do not select `gemini-3.7-flash` outside QA/vision.
 - **`gemini-3.1-flash-image-preview`** RETIRED **2026-09-02** (preview tag dropped) — replaced everywhere by `gemini-3.1-flash-image`. Do not select the `-preview` id for any new work.
 - **`gemini-3.1-flash-lite-preview`** RETIRED **2026-09-02** — replaced everywhere by the rolling alias `gemini-flash-lite-latest`. Do not select the dated `-preview` id for any new work.
 - **`gemini-3.1-pro-preview`** RETIRED **2026-08-14** (founder directive) — replaced everywhere by `gemini-3.7-flash` at `thinkingLevel: "high"` (QA/vision + general reasoning). Do not select `gemini-3.1-pro-preview` for any new work. **Exception:** Claudessa's voice-transcription trio remains pinned to `gemini-3.1-pro-preview` under a standing hold (D-0763) — `gemini-3.7-flash`/`3.8-flash` fabricate transcripts from no-speech audio; do not migrate that lane without clearing the Silero VAD speech-presence gate first.
